@@ -17,10 +17,12 @@ class Game
 
     // Initializers
     void initWindow();
+    void initPlayer();
 
   public:
-    // Constructor
+    // Constructor and Destructor
     Game();
+    virtual ~Game();
 
     // Update Functions
     void updateSFMLEvent();

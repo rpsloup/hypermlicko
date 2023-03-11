@@ -41,11 +41,22 @@ void Game::initWindow()
   this->window->setFramerateLimit(windowFps);
 }
 
-// Constructor
+void Game::initPlayer()
+{
+
+}
+
+// Constructor and Destructor
 
 Game::Game()
 {
   this->initWindow();
+  this->initPlayer();
+}
+
+Game::~Game()
+{
+  delete this->window;
 }
 
 // Update Functions
