@@ -1,5 +1,5 @@
-#include <SFML/Graphics.hpp>
-#include "Headers/Game.h"
+#include "Headers.hpp"
+#include "Headers/Game.hpp"
 
 int main()
 {

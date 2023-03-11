@@ -8,7 +8,7 @@ CLASS_FOLDER="Classes"
 HEADER_FOLDER="Headers"
 LIBRARIES="-lsfml-graphics -lsfml-window -lsfml-system -lconfig++"
 
-if [ $1 = "run" ]
+if [[ -n $1 && $1 = "run" ]]
 then
   ./$BUILD_FOLDER/$PROJECT_NAME
   exit 0
