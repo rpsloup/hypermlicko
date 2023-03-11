@@ -39,6 +39,7 @@ void Game::initWindow()
   this->window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), windowTitle);
   this->window->setVerticalSyncEnabled(windowVSync);
   this->window->setFramerateLimit(windowFps);
+  this->view.setSize(sf::Vector2f(windowWidth, windowHeight));
 }
 
 sf::Texture loadTexture(std::string path)
@@ -156,6 +157,21 @@ void Game::updateKeys()
   this->player.move(finalMovementVector);
 }
 
+void Game::updatePlayer()
+{
+  this->player.update();
+}
+
+void Game::updateView()
+{
+  // Centering the camera
+  this->view.setCenter(sf::Vector2f(
+    this->player.getBounds().left + this->player.getBounds().width / 2,
+    this->player.getBounds().top + this->player.getBounds().height / 2
+  ));
+  this->window->setView(this->view);
+}
+
 void Game::updateTexts()
 {
   sf::Vector2f playerPosition = this->player.getPosition();
@@ -163,6 +179,10 @@ void Game::updateTexts()
   this->positionText.setString(
     "Position\n\nX: " + std::to_string(roundedPosition.x) + "\nY: " + std::to_string(roundedPosition.y)
   );
+  this->positionText.setPosition(sf::Vector2f(
+    this->view.getCenter().x - this->view.getSize().x / 2,
+    this->view.getCenter().y - this->view.getSize().y / 2
+  ));
 }
 
 void Game::update()
@@ -170,8 +190,9 @@ void Game::update()
   this->updateSFMLEvent();
   this->updateClocks();
   this->updateKeys();
+  this->updatePlayer();
+  this->updateView();
   this->updateTexts();
-  this->player.update();
 }
 
 // Render Functions

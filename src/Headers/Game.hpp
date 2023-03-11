@@ -10,6 +10,7 @@ class Game
 {
   private:
     sf::RenderWindow* window;
+    sf::View view;
     sf::Event sfEvent;
     Player player;
 
@@ -43,6 +44,8 @@ class Game
     void updateSFMLEvent();
     void updateClocks();
     void updateKeys();
+    void updatePlayer();
+    void updateView();
     void updateTexts();
     void update();
 
