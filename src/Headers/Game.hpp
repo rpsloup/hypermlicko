@@ -1,11 +1,7 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef GAME_HPP
+#define GAME_HPP
 
-#include <iostream>
-#include <string>
-#include <libconfig.h++>
-#include <SFML/Graphics.hpp>
-
+#include "../Headers.hpp"
 #include "Player.hpp"
 #include "Manager.hpp"
 
@@ -40,4 +36,4 @@ class Game
     void run();
 };
 
-#endif // GAME_H
+#endif // GAME_HPP

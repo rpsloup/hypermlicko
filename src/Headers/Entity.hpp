@@ -1,7 +1,7 @@
-#ifndef ENTITY_H
-#define ENTITY_H
+#ifndef ENTITY_HPP
+#define ENTITY_HPP
 
-#include <SFML/Graphics.hpp>
+#include "../Headers.hpp"
 
 class Entity
 {
@@ -22,4 +22,4 @@ class Entity
     virtual void render(sf::RenderTarget &target) = 0;
 };
 
-#endif // ENTITY_H
+#endif // ENTITY_HPP

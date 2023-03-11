@@ -1,8 +1,7 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
 
-#include <SFML/Graphics.hpp>
-
+#include "../Headers.hpp"
 #include "Entity.hpp"
 
 class Player : public Entity
@@ -20,4 +19,4 @@ class Player : public Entity
     void render(sf::RenderTarget& target);
 };
 
-#endif // PLAYER_H
+#endif // PLAYER_HPP

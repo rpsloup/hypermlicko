@@ -1,10 +1,7 @@
-#ifndef MANAGER_H
-#define MANAGER_H
+#ifndef MANAGER_HPP
+#define MANAGER_HPP
 
-#include <map>
-#include <string>
-#include <stdexcept>
-#include <SFML/Graphics.hpp>
+#include "../Headers.hpp"
 
 template <typename T>
 class Manager
@@ -19,4 +16,4 @@ class Manager
     void a();
 };
 
-#endif // MANAGER_H
+#endif // MANAGER_HPP
