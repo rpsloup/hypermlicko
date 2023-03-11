@@ -6,16 +6,20 @@
 #include <libconfig.h++>
 #include <SFML/Graphics.hpp>
 
+#include "Player.h"
+
 class Game
 {
   private:
     sf::RenderWindow* window;
     sf::Event sfEvent;
+    Player player;
 
     // Initializers
     void initWindow();
 
   public:
+    // Constructor
     Game();
 
     // Update Functions
