@@ -15,6 +15,10 @@ class Game
     // Managers
     Manager<sf::Texture> textureManager;
 
+    // Clocks
+    sf::Clock dtClock;
+    float dt;
+
     // Initializers
     void initWindow();
     void initTextures();
@@ -25,8 +29,13 @@ class Game
     Game();
     virtual ~Game();
 
+    // Accessors
+    const float getDt() const;
+
     // Update Functions
     void updateSFMLEvent();
+    void updateClocks();
+    void updateKeys();
     void update();
 
     // Render Functions

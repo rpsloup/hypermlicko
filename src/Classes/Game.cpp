@@ -75,6 +75,13 @@ Game::~Game()
   delete this->window;
 }
 
+// Accessors
+
+const float Game::getDt() const
+{
+  return this->dt;
+}
+
 // Update Functions
 
 void Game::updateSFMLEvent()
@@ -93,9 +100,44 @@ void Game::updateSFMLEvent()
   }
 }
 
+void Game::updateClocks()
+{
+  this->dt = this->dtClock.restart().asSeconds();
+}
+
+
+void Game::updateKeys()
+{
+  sf::Vector2f finalMovementVector;
+
+  // WASD Movement
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+  {
+    finalMovementVector.y = -1;
+  }
+  else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+  {
+    finalMovementVector.y = 1;
+  }
+
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+  {
+    finalMovementVector.x = -1;
+  }
+  else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+  {
+    finalMovementVector.x = 1;
+  }
+
+  this->player.move(finalMovementVector);
+}
+
 void Game::update()
 {
   this->updateSFMLEvent();
+  this->updateClocks();
+  this->updateKeys();
+  this->player.update();
 }
 
 // Render Functions

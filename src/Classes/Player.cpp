@@ -1,5 +1,8 @@
 #include "../Constants.hpp"
 #include "../Headers/Player.hpp"
+#include "../Headers/Game.hpp"
+
+extern Game game;
 
 // Initializers
 
@@ -14,16 +17,37 @@ void Player::initShape()
 Player::Player()
 {
   this->initShape();
+  this->speed = PLAYER_SPEED;
+}
+
+// Modifiers
+
+void Player::setSpeed(const float newSpeed)
+{
+  this->speed = newSpeed;
 }
 
 // Functions
 
 void Player::update()
 {
+  sf::Vector2f normalisedVector = this->movement;
 
+  // Normalising vector to prevent moving faster than the maximum speed
+  if (std::abs(this->movement.x) == 1 && std::abs(this->movement.y))
+  {
+    normalisedVector /= sqrtf(pow(this->movement.x, 2) + pow(this->movement.y, 2));
+  }
+
+  this->shape.move(normalisedVector * this->speed * game.getDt());  
 }
 
 void Player::render(sf::RenderTarget& target)
 {
   target.draw(this->shape);
+}
+
+void Player::move(sf::Vector2f movement)
+{
+  this->movement = movement;
 }

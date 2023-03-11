@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 // Others
+#include <math.h>
 #include <stdexcept>
 #include <string>
 #include <map>
