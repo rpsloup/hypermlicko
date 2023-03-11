@@ -5,6 +5,7 @@
 #include "../Constants.hpp"
 #include "Player.hpp"
 #include "Manager.hpp"
+#include "BackgroundRect.hpp"
 
 class Game
 {
@@ -13,6 +14,7 @@ class Game
     sf::View view;
     sf::Event sfEvent;
     Player player;
+    BackgroundRect* mainBackgroundRect;
 
     // Texts
     sf::Text positionText;
