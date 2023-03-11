@@ -1,4 +1,4 @@
-#include "../Headers/Entity.h"
+#include "../Headers/Entity.hpp"
 
 // Mutators
 

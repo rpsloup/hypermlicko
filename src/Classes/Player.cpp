@@ -1,11 +1,11 @@
-#include "../Headers/Player.h"
+#include "../Headers/Player.hpp"
 
 // Initializers
 
 void Player::initShape()
 {
   this->shape.setSize(sf::Vector2f(32.f, 32.f));
-  this->shape.setPosition(sf::Vector2f(64.f, 64.f));
+  this->shape.setPosition(sf::Vector2f(0.f, 0.f));
 }
 
 // Constructor

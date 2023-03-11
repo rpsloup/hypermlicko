@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
-#include "Headers/Game.h"
+
+#include "Headers/Game.hpp"
 
 int main()
 {

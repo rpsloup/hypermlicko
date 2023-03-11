@@ -1,12 +1,13 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <string>
 #include <iostream>
+#include <string>
 #include <libconfig.h++>
 #include <SFML/Graphics.hpp>
 
-#include "Player.h"
+#include "Player.hpp"
+#include "Manager.hpp"
 
 class Game
 {
@@ -15,8 +16,12 @@ class Game
     sf::Event sfEvent;
     Player player;
 
+    // Managers
+    Manager<sf::Texture> textureManager;
+
     // Initializers
     void initWindow();
+    void initTextures();
     void initPlayer();
 
   public:

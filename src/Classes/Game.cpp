@@ -1,4 +1,4 @@
-#include "../Headers/Game.h"
+#include "../Headers/Game.hpp"
 
 // Initializers
 
@@ -41,9 +41,24 @@ void Game::initWindow()
   this->window->setFramerateLimit(windowFps);
 }
 
+sf::Texture loadTexture(std::string path)
+{
+  sf::Texture loadedTexture;
+  if (!loadedTexture.loadFromFile(path))
+  {
+    std::cout << "ERROR::GAME::CANT_LOAD_TEXTURE" << std::endl;
+  }
+  return loadedTexture;
+}
+
+void Game::initTextures()
+{
+  this->textureManager.add("player", loadTexture("assets/Textures/player.png"));
+}
+
 void Game::initPlayer()
 {
-
+  this->player.setTexture(&this->textureManager.get("player"));
 }
 
 // Constructor and Destructor
@@ -51,6 +66,7 @@ void Game::initPlayer()
 Game::Game()
 {
   this->initWindow();
+  this->initTextures();
   this->initPlayer();
 }
 
@@ -87,6 +103,7 @@ void Game::update()
 void Game::render()
 {
   this->window->clear();
+  this->player.render(*this->window);
   this->window->display();
 }
 
