@@ -18,6 +18,9 @@ class Player : public Entity
     // Constructor
     Player();
 
+    // Accessors
+    sf::Vector2f getPosition();
+
     // Modifiers
     void setSpeed(const float newSpeed);
 

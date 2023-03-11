@@ -25,3 +25,4 @@ void Manager<T>::a()
 }
 
 template class Manager<sf::Texture>;
+template class Manager<sf::Font>;

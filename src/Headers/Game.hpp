@@ -2,6 +2,7 @@
 #define GAME_HPP
 
 #include "../Headers.hpp"
+#include "../Constants.hpp"
 #include "Player.hpp"
 #include "Manager.hpp"
 
@@ -12,8 +13,12 @@ class Game
     sf::Event sfEvent;
     Player player;
 
+    // Texts
+    sf::Text positionText;
+
     // Managers
     Manager<sf::Texture> textureManager;
+    Manager<sf::Font> fontManager;
 
     // Clocks
     sf::Clock dtClock;
@@ -22,6 +27,8 @@ class Game
     // Initializers
     void initWindow();
     void initTextures();
+    void initFonts();
+    void initTexts();
     void initPlayer();
 
   public:
@@ -36,9 +43,11 @@ class Game
     void updateSFMLEvent();
     void updateClocks();
     void updateKeys();
+    void updateTexts();
     void update();
 
     // Render Functions
+    void renderTexts();
     void render();
 
     // Functions

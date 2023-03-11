@@ -20,6 +20,13 @@ Player::Player()
   this->speed = PLAYER_SPEED;
 }
 
+// Accessors
+
+sf::Vector2f Player::getPosition()
+{
+  return this->shape.getPosition();
+}
+
 // Modifiers
 
 void Player::setSpeed(const float newSpeed)

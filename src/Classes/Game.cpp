@@ -51,9 +51,31 @@ sf::Texture loadTexture(std::string path)
   return loadedTexture;
 }
 
+sf::Font loadFont(std::string path)
+{
+  sf::Font loadedFont;
+  if (!loadedFont.loadFromFile(path))
+  {
+    std::cout << "ERROR::GAME::CANT_LOAD_FONT" << std::endl;
+  }
+  return loadedFont;
+}
+
 void Game::initTextures()
 {
   this->textureManager.add("player", loadTexture("assets/Textures/player.png"));
+}
+
+void Game::initFonts()
+{
+  this->fontManager.add("terminus", loadFont("assets/Fonts/Terminus.ttf"));
+}
+
+void Game::initTexts()
+{
+  this->positionText.setFont(this->fontManager.get("terminus"));
+  this->positionText.setFillColor(sf::Color::White);
+  this->positionText.setCharacterSize(BASE_FONT_SIZE);
 }
 
 void Game::initPlayer()
@@ -67,6 +89,8 @@ Game::Game()
 {
   this->initWindow();
   this->initTextures();
+  this->initFonts();
+  this->initTexts();
   this->initPlayer();
 }
 
@@ -132,20 +156,36 @@ void Game::updateKeys()
   this->player.move(finalMovementVector);
 }
 
+void Game::updateTexts()
+{
+  sf::Vector2f playerPosition = this->player.getPosition();
+  sf::Vector2i roundedPosition = sf::Vector2i(playerPosition);
+  this->positionText.setString(
+    "Position\n\nX: " + std::to_string(roundedPosition.x) + "\nY: " + std::to_string(roundedPosition.y)
+  );
+}
+
 void Game::update()
 {
   this->updateSFMLEvent();
   this->updateClocks();
   this->updateKeys();
+  this->updateTexts();
   this->player.update();
 }
 
 // Render Functions
 
+void Game::renderTexts()
+{
+  this->window->draw(this->positionText);
+}
+
 void Game::render()
 {
   this->window->clear();
   this->player.render(*this->window);
+  this->renderTexts();
   this->window->display();
 }
 
