@@ -18,6 +18,7 @@ class Game
 
     // Texts
     sf::Text positionText;
+    sf::Text fpsText;
 
     // Managers
     Manager<sf::Texture> textureManager;
